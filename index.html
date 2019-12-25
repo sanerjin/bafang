@@ -1,266 +1,271 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<title>Basic One-Page Scroll</title>
-<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+<meta charset="utf-8">
+<title>阳泉八方电气有限公司</title>
+<link rel="stylesheet" href="css/one-scroll.css" />
 <style>
-*, *:before, *:after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-.demo-wrapper {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
-}
-
-.backgrounds {
-  width: 100vw;
-  height: 100vh;
-  transition: -webkit-transform ease 0.8s;
-  transition: transform ease 0.8s;
-  transition: transform ease 0.8s, -webkit-transform ease 0.8s;
-}
-
-.bg {
-  width: 100%;
-  height: 100%;
-  padding: 1px;
-}
-
-.bg-1 {
+.page1 {
   background: url("img/1.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-2 {
+.page2 {
   background: url("img/2.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-3 {
+.page3 {
   background: url("img/3.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-4 {
+.page4 {
   background: url("img/4.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-5 {
+.page5 {
   background: url("img/5.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-6 {
+.page6 {
   background: url("img/6.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-7 {
+.page7 {
   background: url("img/7.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-8 {
+.page8 {
   background: url("img/8.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-9 {
+.page9 {
   background: url("img/9.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-10 {
+.page10 {
   background: url("img/10.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-11 {
+.page11 {
   background: url("img/11.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-12 {
+.page12 {
   background: url("img/12.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-13 {
+.page13 {
   background: url("img/13.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-14 {
+.page14 {
   background: url("img/14.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-15 {
+.page15 {
   background: url("img/15.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-16 {
+.page16 {
   background: url("img/16.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.bg-17 {
+.page17 {
   background: url("img/17.jpg");
   background-size: cover;
   background-position: center;
 }
+p.title { position: relative; top: 35%; font: 700 40px "Microsoft Yahei"; color: #fff; text-align: center;}
 
-h1 {
-  color: white;
-  font-family: Raleway, sans-serif;
-  line-height: 100vh;
-  font-size: 3rem;
+#preloader {
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+     background: #2c3e50 ; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    z-index:99; /* makes sure it stays on top */
+}
+
+#status {
+    width:50px;
+    height:30px;
+    position:fixed;
+    left:50%; /* centers the loading animation horizontally one the screen */
+    top:50%; /* centers the loading animation vertically one the screen */
+   margin:-25px 0 0 -15px; /* is width and height divided by two */
+}
+
+.spinner {
+  margin: 0px auto;
+  width: 50px;
+  height: 30px;
   text-align: center;
+  font-size: 10px;
+}
+
+.spinner > div {
+  background-color: #fff;
+  height: 100%;
+  width: 6px;
+  display: inline-block;
+  
+  -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+  animation: stretchdelay 1.2s infinite ease-in-out;
+}
+
+.spinner .rect2 {
+  -webkit-animation-delay: -1.1s;
+  animation-delay: -1.1s;
+}
+
+.spinner .rect3 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+
+.spinner .rect4 {
+  -webkit-animation-delay: -0.9s;
+  animation-delay: -0.9s;
+}
+
+.spinner .rect5 {
+  -webkit-animation-delay: -0.8s;
+  animation-delay: -0.8s;
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+  20% { -webkit-transform: scaleY(1.0) }
+}
+
+@keyframes stretchdelay {
+  0%, 40%, 100% { 
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% { 
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
 }
 </style>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.scroll.min.js"></script>
 <script>
-  window.console = window.console || function(t) {};
-</script>
-<script>
-  if (document.location.search.match(/type=embed/gi)) {
-    window.parent.postMessage("resize", "*");
-  }
+$(function(){
+	$('.main').onepage_scroll({
+		sectionContainer: '.page'
+	});
+});
 </script>
 </head>
-<body translate="no">
-<div class="demo-wrapper">
-<div class="backgrounds">
-<div class="bg-1 bg">
-<h1></h1>
+<body>
+<div id="preloader">
+  <div id="status">
+     <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
+  </div>
 </div>
-<div class="bg-2 bg">
-<h1></h1>
+<div class="main">
+	<div class="page page1">
+		<p class="title"></p>
+	</div>
+	<div class="page page2">
+		<p class="title"></p>
+	</div>
+	<div class="page page3">
+		<p class="title"></p>
+	</div>
+	<div class="page page4">
+		<p class="title"></p>
+	</div>
+	<div class="page page5">
+		<p class="title"></p>
+	</div>
+	<div class="page page6">
+		<p class="title"></p>
+	</div>
+	<div class="page page7">
+		<p class="title"></p>
+	</div>
+	<div class="page page8">
+		<p class="title"></p>
+	</div>
+	<div class="page page9">
+		<p class="title"></p>
+	</div>
+	<div class="page page10">
+		<p class="title"></p>
+	</div>
+	<div class="page page11">
+		<p class="title"></p>
+	</div>
+	<div class="page page12">
+		<p class="title"></p>
+	</div>
+	<div class="page page13">
+		<p class="title"></p>
+	</div>
+	<div class="page page14">
+		<p class="title"></p>
+	</div>
+	<div class="page page15">
+		<p class="title"></p>
+	</div>
+	<div class="page page16">
+		<p class="title"></p>
+	</div>
+	<div class="page page17">
+		<p class="title"></p>
+	</div>
 </div>
-<div class="bg-3 bg">
-<h1></h1>
-</div>
-<div class="bg-4 bg">
-<h1></h1>
-</div>
-<div class="bg-5 bg">
-<h1></h1>
-</div>
-<div class="bg-6 bg">
-<h1></h1>
-</div>
-<div class="bg-7 bg">
-<h1></h1>
-</div>
-<div class="bg-8 bg">
-<h1></h1>
-</div>
-<div class="bg-9 bg">
-<h1></h1>
-</div>
-<div class="bg-10 bg">
-<h1></h1>
-</div>
-<div class="bg-11 bg">
-<h1></h1>
-</div>
-<div class="bg-12 bg">
-<h1></h1>
-</div>
-<div class="bg-13 bg">
-<h1></h1>
-</div>
-<div class="bg-14 bg">
-<h1></h1>
-</div>
-<div class="bg-15 bg">
-<h1></h1>
-</div>
-<div class="bg-16 bg">
-<h1></h1>
-</div>
-<div class="bg-17 bg">
-<h1></h1>
-</div>
-</div>
-</div>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-<script id="rendered-js">
-$(function () {
-  var curBot = 0;
-  var scrollable = true;
-
-  function navDown() {
-    curBot += 100;
-    scrollable = false;
-    $(".backgrounds").css("transform", "translateY(-" + curBot + "vh)");
-    setTimeout(function () {
-      scrollable = true;
-    }, 1000);
-  }
-
-  function navUp() {
-    curBot -= 100;
-    scrollable = false;
-    $(".backgrounds").css("transform", "translateY(-" + curBot + "vh)");
-    setTimeout(function () {
-      scrollable = true;
-    }, 1000);
-  }
-  var stY;
-
-  $(document).on("touchstart", function (event) {
-    stY = event.originalEvent.touches[0].screenY;
-  });
-
-  $(document).on("touchmove", function (event) {
-    event.preventDefault();
-    var curY = event.originalEvent.touches[0].screenY;
-    if (stY - curY > 50 && curBot <= 300 && scrollable)
-    navDown();else
-    if (curY - stY > 50 && curBot > 0 && scrollable)
-    navUp();
-  });
-
-  $(document).on("keydown", function (event) {
-    if (event.keyCode == 40 && curBot <= 300 && scrollable)
-    navDown();else
-    if (event.keyCode == 38 && curBot > 0 && scrollable)
-    navUp();
-  });
-
-  $(document).on("mousewheel DOMMouseScroll", function (event) {
-    event.preventDefault();
-    if ((event.originalEvent.wheelDelta < 0 || event.originalEvent.detail > 0) && curBot <= 300 && scrollable)
-    navDown();else
-    if ((event.originalEvent.wheelDelta > 0 || event.originalEvent.detail < 0) && curBot > 0 && scrollable)
-    navUp();
-  });
-
-});
+<div style="display:none"></div>
+<script>
+$(window).load(function() {
+    $("#status").fadeOut();
+    $("#preloader").delay(500).fadeOut("slow");
+})
 </script>
 </body>
 </html>
